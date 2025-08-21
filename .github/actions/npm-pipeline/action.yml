@@ -16,9 +16,12 @@ runs:
 
     - name: Install dependencies
       run: npm install
+      shell: bash
 
     - name: Run tests
       run: npm test
+      shell: bash
 
     - name: Build project
       run: npm run build
+      shell: bash
