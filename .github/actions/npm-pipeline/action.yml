@@ -1,0 +1,24 @@
+name: "NPM Pipeline Action"
+description: "Install, Test, and Build Node.js apps"
+inputs:
+  node-version:
+    description: "Node.js version"
+    required: false
+    default: "18"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Build project
+      run: npm run build
