@@ -1,13 +1,17 @@
-name: Node CI
-on: [push, pull_request]
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Run custom NPM pipeline
-        uses: ./.github/actions/npm-pipeline
+      - name: Run custom composite action
+        uses: ./.github/actions/setup-node
         with:
-          node-version: 20
+          node-version: "20"
